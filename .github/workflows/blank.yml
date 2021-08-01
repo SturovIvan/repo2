@@ -3,7 +3,7 @@ env:
    EB_PACKAGE_S3_BUCKET_NAME : "mybacketsss"
    EB_APPLICATION_NAME       : "myapplication"
    EB_ENVIRONMENT_NAME       : "Myapplication-env"
-   DEPLOY_PACKAGE_NAME       : "ya"
+   DEPLOY_PACKAGE_NAME       : "ya_${{ github.sha }}"
    AWS_REGION_NAME           : "us-west-2"
    
 on:
@@ -18,6 +18,9 @@ jobs:
       - name: Clone rep
         uses: actions/checkout@v1 
         
+      - name: lusim
+        run : ls -a
+        
       - name: my aws credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -26,7 +29,7 @@ jobs:
           aws-region             : ${{ env.AWS_REGION_NAME }}     
      
       - name: copy to s3
-        run : aws s3 cp ~/repo2/ s3://${{env.EB_PACKAGE_S3_BUCKET_NAME }}/
+        run : aws s3 cp  s3://${{env.EB_PACKAGE_S3_BUCKET_NAME }}/
         
       - name: print ez jobs
         run : echo " finish ez"
