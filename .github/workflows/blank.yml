@@ -22,7 +22,7 @@ jobs:
         run : ls -a
         
       - name: zipuem
-        run : mkdir ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
+        run : mkdir ${{ env.DEPLOY_PACKAGE_NAME }}
         
       - name: my aws credentials
         uses: aws-actions/configure-aws-credentials@v1
