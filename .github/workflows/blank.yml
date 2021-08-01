@@ -29,7 +29,7 @@ jobs:
           aws-region             : ${{ env.AWS_REGION_NAME }}     
      
       - name: copy to s3
-        run : aws s3 cp .github/workflows/ s3://${{env.EB_PACKAGE_S3_BUCKET_NAME }}/
+        run : aws s3 cp /github/workflows/ s3://${{env.EB_PACKAGE_S3_BUCKET_NAME }}/
         
       - name: print ez jobs
         run : echo " finish ez"
