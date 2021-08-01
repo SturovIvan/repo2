@@ -21,8 +21,6 @@ jobs:
       - name: lusim
         run : ls -a
         
-      - name: zipuem
-        run : mkdir ${{ env.DEPLOY_PACKAGE_NAME }}
         
       - name: my aws credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -32,7 +30,7 @@ jobs:
           aws-region             : ${{ env.AWS_REGION_NAME }}     
      
       - name: copy to s3
-        run : aws s3 cp ${{ env.DEPLOY_PACKAGE_NAME }} s3://${{env.EB_PACKAGE_S3_BUCKET_NAME }}/
+        run : aws s3 cp dist s3://${{env.EB_PACKAGE_S3_BUCKET_NAME }}/
         
       - name: print ez jobs
         run : echo " finish ez"
